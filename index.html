@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='8' fill='%23c8ff32'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23E07820'/><line x1='32' y1='14' x2='16' y2='36' stroke='white' stroke-width='3' stroke-linecap='round'/><line x1='32' y1='14' x2='48' y2='36' stroke='white' stroke-width='3' stroke-linecap='round'/><line x1='48' y1='44' x2='38' y2='56' stroke='white' stroke-width='3' stroke-linecap='round'/><line x1='48' y1='44' x2='58' y2='56' stroke='white' stroke-width='3' stroke-linecap='round'/><circle cx='32' cy='14' r='8' fill='%23E07820' stroke='white' stroke-width='3'/><text x='32' y='18' text-anchor='middle' font-size='9' font-weight='500' fill='white' font-family='monospace'>F</text><circle cx='16' cy='40' r='7' fill='white'/><circle cx='48' cy='40' r='7' fill='white'/><circle cx='38' cy='57' r='7' fill='white'/><circle cx='58' cy='57' r='7' fill='white'/></svg>">
 <style>
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
@@ -21,9 +21,9 @@
     --text: #e8e8ec;
     --text-dim: #8888a0;
     --text-muted: #55556a;
-    --accent: #c8ff32;
-    --accent-dim: rgba(200,255,50,0.08);
-    --accent-glow: rgba(200,255,50,0.15);
+    --accent: #E07820;
+    --accent-dim: rgba(224,120,32,0.08);
+    --accent-glow: rgba(224,120,32,0.15);
     --white: #ffffff;
     --font-body: 'DM Sans', sans-serif;
     --font-mono: 'Space Mono', monospace;
@@ -40,7 +40,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── Grain overlay ── */
   body::after {
     content: '';
     position: fixed;
@@ -51,7 +50,6 @@
     opacity: 0.5;
   }
 
-  /* ── Ambient glow ── */
   .ambient {
     position: fixed;
     top: -30vh;
@@ -59,12 +57,11 @@
     transform: translateX(-50%);
     width: 80vw;
     height: 60vh;
-    background: radial-gradient(ellipse, rgba(200,255,50,0.03) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(224,120,32,0.03) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
   }
 
-  /* ── Grid lines (decorative) ── */
   .grid-lines {
     position: fixed;
     inset: 0;
@@ -82,7 +79,6 @@
     background-size: 120px 120px;
   }
 
-  /* ── Layout ── */
   .container {
     position: relative;
     z-index: 1;
@@ -91,12 +87,9 @@
     padding: 0 clamp(24px, 5vw, 64px);
   }
 
-  /* ── Navigation ── */
   nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     z-index: 100;
     padding: 0 clamp(24px, 5vw, 64px);
     backdrop-filter: blur(20px) saturate(1.2);
@@ -113,27 +106,13 @@
     height: 72px;
   }
   .logo {
-    font-family: var(--font-mono);
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--white);
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 10px;
   }
-  .logo-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--accent);
-    border-radius: 50%;
-    box-shadow: 0 0 12px var(--accent-glow);
-    animation: pulse 3s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 12px var(--accent-glow); }
-    50% { opacity: 0.5; box-shadow: 0 0 4px var(--accent-glow); }
+  .logo svg {
+    height: 46px;
+    width: auto;
   }
   .nav-tag {
     font-family: var(--font-mono);
@@ -146,7 +125,6 @@
     border-radius: 100px;
   }
 
-  /* ── Hero ── */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -220,12 +198,15 @@
     animation: pulse 2s ease-in-out infinite;
   }
 
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 12px var(--accent-glow); }
+    50% { opacity: 0.5; box-shadow: 0 0 4px var(--accent-glow); }
+  }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ── Scroll indicator ── */
   .scroll-hint {
     position: absolute;
     bottom: 40px;
@@ -257,12 +238,10 @@
     50% { opacity: 1; }
   }
 
-  /* ── Sections ── */
   section.content-section {
     padding: 120px 0;
     border-top: 1px solid var(--border);
   }
-
   .section-label {
     font-family: var(--font-mono);
     font-size: 11px;
@@ -281,7 +260,6 @@
     background: var(--border);
   }
 
-  /* ── What we build ── */
   .what-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -302,20 +280,14 @@
   .what-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
     opacity: 0;
     transition: opacity 0.4s ease;
   }
-  .what-card:hover {
-    border-color: var(--border-light);
-    background: var(--bg-subtle);
-  }
+  .what-card:hover { border-color: var(--border-light); background: var(--bg-subtle); }
   .what-card:hover::before { opacity: 1; }
-
   .what-card h3 {
     font-family: var(--font-mono);
     font-size: 13px;
@@ -334,7 +306,7 @@
   .what-card.featured {
     grid-column: 1 / -1;
     background: var(--accent-dim);
-    border-color: rgba(200,255,50,0.12);
+    border-color: rgba(224,120,32,0.12);
   }
   .what-card.featured h3 { color: var(--white); }
   .what-card.featured .ead-tag {
@@ -343,14 +315,13 @@
     font-size: 11px;
     letter-spacing: 0.1em;
     background: var(--accent);
-    color: var(--bg);
+    color: var(--white);
     padding: 4px 12px;
     border-radius: 4px;
     font-weight: 700;
     margin-bottom: 16px;
   }
 
-  /* ── Contact ── */
   .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -385,7 +356,6 @@
     border-color: var(--accent);
   }
 
-  /* ── Footer ── */
   footer {
     border-top: 1px solid var(--border);
     padding: 40px 0;
@@ -404,7 +374,6 @@
     color: var(--text-muted);
   }
 
-  /* ── Intersection Observer reveal ── */
   .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -425,8 +394,20 @@
 <nav>
   <div class="nav-inner">
     <a href="#" class="logo">
-      <span class="logo-dot"></span>
-      FACTORIZER
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 66">
+        <rect x="0" y="0" width="66" height="66" rx="12" fill="#E07820"/>
+        <line x1="33" y1="15" x2="16" y2="38" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="33" y1="15" x2="50" y2="38" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="50" y1="46" x2="40" y2="59" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="50" y1="46" x2="60" y2="59" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="33" cy="15" r="9" fill="#E07820" stroke="white" stroke-width="2.5"/>
+        <text x="33" y="19" text-anchor="middle" font-size="10" font-weight="700" fill="white" font-family="monospace">F</text>
+        <circle cx="16" cy="42" r="7" fill="white"/>
+        <circle cx="50" cy="42" r="7" fill="white"/>
+        <circle cx="40" cy="60" r="7" fill="white"/>
+        <circle cx="60" cy="60" r="7" fill="white"/>
+        <text x="82" y="46" font-size="34" font-weight="500" letter-spacing="-0.5" fill="white" font-family="sans-serif">Factorizer</text>
+      </svg>
     </a>
     <span class="nav-tag">Coming Soon</span>
   </div>
@@ -452,7 +433,6 @@
   <!-- What We Build -->
   <section class="content-section" id="about">
     <div class="section-label reveal">What we build</div>
-
     <div class="what-grid">
       <div class="what-card featured reveal">
         <span class="ead-tag">EAD</span>
@@ -473,7 +453,6 @@
   <!-- Contact -->
   <section class="content-section" id="contact">
     <div class="section-label reveal">Get in touch</div>
-
     <div class="contact-grid">
       <div class="contact-block reveal">
         <h3>Email</h3>
@@ -496,7 +475,6 @@
 </div>
 
 <script>
-  // Intersection Observer for reveal animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -508,7 +486,6 @@
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Hide scroll hint on scroll
   const scrollHint = document.querySelector('.scroll-hint');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 100 && scrollHint) {
